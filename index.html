@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GG Travels | Book a Ride in [Location]</title>
+  <meta name="description" content="Book reliable rides in [Location]. Clean cars, transparent pricing, on-time pickup. WhatsApp to book instantly." />
+
+  <style>
+    :root{
+      --bg:#0b1220;
+      --card:#0f1b33;
+      --text:#eaf0ff;
+      --muted:#a9b7d6;
+      --accent:#4f8cff;
+      --accent2:#27c499;
+      --border: rgba(255,255,255,.12);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial; background:linear-gradient(180deg,#071026, #0b1220 40%, #071026); color:var(--text);}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1100px;margin:0 auto;padding:0 18px}
+    .nav{position:sticky;top:0;z-index:10;background:rgba(7,16,38,.7);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;gap:10px;align-items:center;font-weight:700;letter-spacing:.3px}
+    .logo{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:inline-block}
+    .menu{display:flex;gap:18px;align-items:center}
+    .menu a{color:var(--muted);font-weight:600;font-size:14px}
+    .menu a:hover{color:var(--text)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 14px;border-radius:12px;border:1px solid var(--border);background:rgba(255,255,255,.06);font-weight:700}
+    .btn:hover{transform:translateY(-1px)}
+    .btn-primary{background:linear-gradient(135deg,var(--accent), #6aa6ff);border:none}
+    .btn-green{background:linear-gradient(135deg,var(--accent2), #3be0b3);border:none;color:#04110d}
+    .hero{padding:44px 0 18px}
+    .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:22px;align-items:center}
+    .pill{display:inline-flex;gap:10px;align-items:center;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid var(--border);color:var(--muted);font-weight:600;font-size:13px}
+    h1{margin:14px 0 10px;font-size:44px;line-height:1.05}
+    .sub{color:var(--muted);font-size:16px;line-height:1.6;max-width:58ch}
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+    .hero-card{border:1px solid var(--border);background:rgba(255,255,255,.05);border-radius:18px;padding:16px}
+    .car-box{height:220px;border-radius:14px;border:1px dashed rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;color:var(--muted);text-align:center;padding:14px}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+    .stat{border:1px solid var(--border);background:rgba(255,255,255,.04);border-radius:14px;padding:12px}
+    .stat b{display:block;font-size:16px}
+    .stat span{color:var(--muted);font-size:12px}
+    .section{padding:34px 0}
+    .section h2{margin:0 0 10px;font-size:28px}
+    .section p{margin:0;color:var(--muted);line-height:1.6}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
+    .card{border:1px solid var(--border);background:rgba(255,255,255,.05);border-radius:18px;padding:16px}
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(79,140,255,.15);border:1px solid rgba(79,140,255,.35);color:#cfe1ff;font-weight:700;font-size:12px}
+    .price{font-size:22px;font-weight:800;margin-top:10px}
+    .muted{color:var(--muted)}
+    .fleet{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
+    .car-img{height:140px;border-radius:14px;border:1px dashed rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;color:var(--muted)}
+    .car-meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .tag{font-size:12px;color:var(--muted);border:1px solid var(--border);padding:6px 10px;border-radius:999px}
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+    .map{height:300px;border-radius:18px;border:1px dashed rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;color:var(--muted)}
+    .review-box{height:260px;border-radius:18px;border:1px dashed rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;color:var(--muted);text-align:center;padding:14px}
+    .footer{padding:26px 0;border-top:1px solid var(--border);color:var(--muted);font-size:14px}
+    @media (max-width: 900px){
+      .hero-grid,.split{grid-template-columns:1fr}
+      h1{font-size:36px}
+      .grid-3,.fleet{grid-template-columns:1fr}
+      .menu{display:none}
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAV -->
+  <div class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <span class="logo"></span>
+        <span>GG Travels</span>
+      </div>
+
+      <div class="menu">
+        <a href="#fleet">Fleet</a>
+        <a href="#prices">Prices</a>
+        <a href="#area">Service Area</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <a class="btn btn-primary" href="#contact">Book Now</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="pill">🚗 Reliable rides in <b>[Location]</b> • Transparent pricing • On-time pickup</div>
+        <h1>Book a ride in <span style="color:#cfe1ff;">[Location]</span> — fast & hassle-free</h1>
+        <p class="sub">
+          Clean cars, polite drivers, and clear pricing. Message us on WhatsApp or call to confirm instantly.
+          We operate only in <b>[Location]</b>.
+        </p>
+
+        <div class="cta-row">
+          <a class="btn btn-green" href="https://wa.me/91XXXXXXXXXX?text=Hi%20GG%20Travels%2C%20I%20want%20to%20book%20a%20ride%20in%20%5BLocation%5D.%20Pickup%3A%20%5Bplace%5D%20Date%3A%20%5Bdate%5D%20Time%3A%20%5Btime%5D%20Car%3A%20%5Bcar%5D" target="_blank" rel="noopener">
+            WhatsApp to Book
+          </a>
+          <a class="btn" href="tel:+91XXXXXXXXXX">Call Now</a>
+          <a class="btn" href="#prices">View Prices</a>
+        </div>
+
+        <div class="stats">
+          <div class="stat"><b>⭐ 4.8+</b><span>Average rating</span></div>
+          <div class="stat"><b>24/7</b><span>Support on WhatsApp</span></div>
+          <div class="stat"><b>On-time</b><span>Pickup commitment</span></div>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="car-box">
+          <div>
+            <b>Car Image / Slider Area</b><br/>
+            <span class="muted">We’ll replace this with your real car photos.</span>
+          </div>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
+          <span class="tag">Airport pickup</span>
+          <span class="tag">Local rides</span>
+          <span class="tag">Full-day package</span>
+          <span class="tag">Corporate</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- QUICK PRICES -->
+  <div id="prices" class="section">
+    <div class="container">
+      <h2>Popular prices</h2>
+      <p>Clear pricing with no surprises. (We’ll replace placeholders with your real rates.)</p>
+
+      <div class="grid-3">
+        <div class="card">
+          <span class="badge">Airport Pickup</span>
+          <div class="price">₹ [xxxx]</div>
+          <div class="muted">Includes basic waiting time</div>
+        </div>
+
+        <div class="card">
+          <span class="badge">City Ride</span>
+          <div class="price">₹ [xxxx]</div>
+          <div class="muted">Point-to-point within [Location]</div>
+        </div>
+
+        <div class="card">
+          <span class="badge">Full-Day Package</span>
+          <div class="price">₹ [xxxx]</div>
+          <div class="muted">8 hrs / 80 km (example)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLEET -->
+  <div id="fleet" class="section">
+    <div class="container">
+      <h2>Fleet</h2>
+      <p>Choose the right car for your trip.</p>
+
+      <div class="fleet">
+        <div class="card">
+          <div class="car-img">Car Image</div>
+          <h3 style="margin:12px 0 6px;">Sedan</h3>
+          <div class="car-meta">
+            <span class="tag">4 seats</span><span class="tag">AC</span><span class="tag">2 bags</span>
+          </div>
+          <div class="price">From ₹ [xxxx]</div>
+        </div>
+
+        <div class="card">
+          <div class="car-img">Car Image</div>
+          <h3 style="margin:12px 0 6px;">SUV</h3>
+          <div class="car-meta">
+            <span class="tag">6–7 seats</span><span class="tag">AC</span><span class="tag">4 bags</span>
+          </div>
+          <div class="price">From ₹ [xxxx]</div>
+        </div>
+
+        <div class="card">
+          <div class="car-img">Car Image</div>
+          <h3 style="margin:12px 0 6px;">Tempo / Van</h3>
+          <div class="car-meta">
+            <span class="tag">8–12 seats</span><span class="tag">AC optional</span><span class="tag">Large luggage</span>
+          </div>
+          <div class="price">From ₹ [xxxx]</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICE AREA + REVIEWS -->
+  <div class="section">
+    <div class="container split">
+      <div id="area" class="card">
+        <h2 style="margin:0 0 10px;">Service area</h2>
+        <p>We operate only in <b>[Location]</b>. Add your service radius and key pickup points here.</p>
+        <div class="map" style="margin-top:14px;">Google Map Embed Area</div>
+        <p class="muted" style="margin-top:12px;">Example pickups: Airport • Railway station • Hotels • Local landmarks</p>
+      </div>
+
+      <div id="reviews" class="card">
+        <h2 style="margin:0 0 10px;">Google reviews</h2>
+        <p>We’ll embed your Google Business reviews here (or show top reviews + link).</p>
+        <div class="review-box" style="margin-top:14px;">
+          Google Reviews Embed / Screenshot Cards
+        </div>
+        <div style="margin-top:12px">
+          <a class="btn" href="#" target="_blank" rel="noopener">View on Google</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div id="contact" class="section">
+    <div class="container">
+      <h2>Book now</h2>
+      <p>Fastest way: WhatsApp. Or call anytime.</p>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3 style="margin:0 0 10px;">WhatsApp</h3>
+          <p class="muted">Send pickup + date + time + car preference.</p>
+          <a class="btn btn-green" href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noopener">Chat on WhatsApp</a>
+        </div>
+
+        <div class="card">
+          <h3 style="margin:0 0 10px;">Call</h3>
+          <p class="muted">Quick confirmation & pricing.</p>
+          <a class="btn" href="tel:+91XXXXXXXXXX">Call +91 XXXXX XXXXX</a>
+        </div>
+
+        <div class="card">
+          <h3 style="margin:0 0 10px;">Email</h3>
+          <p class="muted">For corporate / planned bookings.</p>
+          <a class="btn" href="mailto:youremail@example.com">Send Email</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="container">
+      © <span id="year"></span> GG Travels • Operating only in [Location]
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
