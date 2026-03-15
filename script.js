@@ -44,7 +44,9 @@ document.addEventListener('DOMContentLoaded', () => {
         {src: "assets/sideview.jpeg", alt: "Side View"},
         {src: "assets/FrontSeat.jpeg", alt: "Front Seats"},
         {src: "assets/Steering.jpeg", alt: "Dashboard & Steering"},
-        {src: "assets/BackSeat.jpeg", alt: "Back Seats"}
+        {src: "assets/BackSeat.jpeg", alt: "Back Seats"},
+        {src: "assets/backgroundImage.jpeg", alt: "Background Image"}
+
     ];
 
     let currentIndex = 0;
